@@ -9,14 +9,21 @@ class ClickityClick extends React.Component {
 
          // Define the initial state
          this.state = {
-             hasBeenClicked: false
+             hasBeenClicked: false,
+             currentTheme: 'blue',
+             
          };
      }
-
+      // remember the spread operator for future reference, it is great for updating
+      // the state of an attribute of an object. It can either update or add an attribute
      handleClick = () => {
        // Update our state here...
        this.setState({
            hasBeenClicked: true
+           // state updates are not synchronous, they are asynchronous
+             // we cannot just console.log our state and expect it be updated
+             // we would have to use a callback as an argument within the
+             // setState() method
        })
      };
      
@@ -42,3 +49,29 @@ export default ClickityClick
 // the state, the component shouldn't have any state. State is only
 // reserved for data that changes in our component and is visible
 // in the UI.
+// Changes in state and/or props will both trigger a re-render of our React component.
+// However, changes in state can only happend internally due to components changing their
+// own state. Thus, a component can trigger changes in its own state
+// A component cannot change its props. Changes in props can only happen externally,
+// meaning the parent or grandparent component changes the values its passing 
+// down to its children.
+// this.state should not be used inside of setState() because state is updated 
+// asynchronously. this.state should be used outside of this.setstate() to ensure everything
+// works correctly.
+
+// However, instead of passing an object into setState, we can also pass a function.
+// That function, when called inside setState will be passed the component state from
+// when that setState was called. This is typically referred to as the previous state.
+// with this knowledge, we can rewrite the handleClick function to:
+
+/* 
+
+handleClick = () => {
+    this.setState(previousState => {
+        return {
+            count: previousState.count + 1
+        }
+    })
+}
+
+*/
