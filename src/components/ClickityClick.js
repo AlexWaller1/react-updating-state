@@ -75,3 +75,11 @@ handleClick = () => {
 }
 
 */
+
+/* 
+
+To recap: Using setState, we can update a component's state. We frequently use events to
+trigger these updates, such as onClick() when we render our JSX. setState is called 
+asynchronously and merges the existing state with whatever object is passed in.
+
+*/
