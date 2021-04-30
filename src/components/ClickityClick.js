@@ -2,8 +2,9 @@
 import React from 'react'
 
 class ClickityClick extends React.Component {
-  
+  // state goes in the constructor because constructor goes first
      constructor() {
+         // use super() because we inherit from the React class
          super();
 
          // Define the initial state
